@@ -6,32 +6,26 @@
  */
 #include <cstdlib>
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 int main(int argc, char** argv) {
-    int myArray[] = {1,2,3,4,5,6,7};
-    int size = sizeof(myArray)/sizeof(myArray[0]);
-    for (int i=0; i<size; i++){
-        cout << myArray[i] << ", ";
-    }
-    cout << endl;
-    int *head;
-    head = myArray;
-    int *tail;
-    tail = &myArray[size-1];
-    int temp;
-    while (head < tail){
-        temp = *head;
-        *head = *tail;
-        *tail = temp;
-        head++;
-        tail--;
-    }
-    
-    for (int i=0; i<size; i++){
-        cout << myArray[i] << ", ";
-    }
-    
-    cout << endl;
-    return 0;
+	int argv1len = strlen(argv[1]); 
+	char myString[argv1len] = {};
+	cout << "           argv[1]: " << argv[1] << endl;
+	strcpy(myString, argv[1]);
+	char *head;
+	char *tail;
+	char temp;
+	head = myString;
+	tail = &myString[argv1len-1];
+	while (head < tail){
+		temp = *head;
+		*head = *tail;
+		*tail = temp;
+		head++;
+		tail--;
+	}
+	cout << "Reversed string is: " << myString << endl;
+	return 0;
 }
